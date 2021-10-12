@@ -37,6 +37,73 @@ fn operators () {
     println!("a_int {}, a_float {}", a_int_pow, a_float_pow);
 }
 
+
+fn structs () {
+
+    struct Human {
+        name:String,
+        age:i32
+    }
+
+    let person = Human{name:"sachin".to_string(), age:21};
+    println!("Hi I am {}! and I am {} years old.", person.name ,person.age);
+}
+
+fn enums () {
+    #[derive(Debug)]
+    enum Language {
+        Javascript,
+        Python,
+        Rust
+    }
+
+    let primary_lang = Language::Javascript;
+
+    let new_lang = match primary_lang {
+        Language::Javascript => "All Rounder",
+        Language::Python => "Good For Scripting",
+        Language::Rust => "Awesome C Alternative"
+    };
+
+    println!("{:#?} is a {}", primary_lang, new_lang);
+}
+
+fn inlineIf () {
+
+    let age =19;
+    let is_medical_condition = false;
+    let is_eligible_for_drivers_license =  if age >= 19 {
+        if !is_medical_condition {
+            true
+        }
+        else {
+            false
+        }
+    }else{
+        false
+    };
+
+    println!("I am {} years old and my drivers license status is {}", age, is_eligible_for_drivers_license);
+
+}
+
+fn options () {
+    #[derive(Debug)]
+    let status_code = Some(200);
+
+    // let status_description = if status_code == 200 {Some(status_code)}else {None}
+
+    let response = match status_code {
+        
+        Some(200) => "Success",
+        None => "Not Success",
+        _ => "Not valid"
+    };
+
+    println!("status_code {:#?} means {}", status_code, response);
+
+}
+
 fn main() {
-    
+    options();
 }
