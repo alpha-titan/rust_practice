@@ -223,6 +223,39 @@ fn hashSet () {
  
 }
 
+fn Strings () {
+    let mut string = String::new();
+    string.push('a');
+    println!("{}", string);
+    let c_string = " bat";
+    let mut new_string = string + c_string;
+    println!("{}", new_string);
+    new_string.remove(0);
+    println!("{}", new_string);
+    //? covert &str to String
+    let con_string = String::from("Hello World");
+    println!("{}", con_string);
+    for char in con_string.chars(){
+        print!("{}", char);
+    }
+    println!();
+    let str_vec:Vec<&str> =  con_string.split(" ").collect();
+    println!("{:?}", str_vec );
+    for char in con_string.chars().rev(){
+        print!("{}", char);
+    }
+
+    //? Static string
+    println!();
+    let s:&'static str = "I am Sachin";
+    let replace = s.replace("Sachin", "Sachin AK");
+    println!("{}", replace);
+    if let Some(h) = s.chars().nth(100){
+        println!("{}", h);
+    }
+
+}
+
 fn main() {
-    vectors()
+    Strings()
 }
