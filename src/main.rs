@@ -1,8 +1,39 @@
-use std::{collections::{HashMap, HashSet}, mem};
+use std::{collections::{HashMap, HashSet}, mem, string};
 
+use traits::{Engine, FourWheeler};
+mod traits;
 #[allow(unused_imports)]
 #[allow(dead_code)]
 #[allow(unused_variables)]
+#[allow(unused_attributes)]
+#[allow(unused_assignments)]
+#[allow(non_snake_case)]
+#[allow(unused_labels)]
+
+trait LivingOrganism {
+    fn create<S:Into<String>> (name: S, age: i32) -> Self;
+    fn walk (&self);
+    fn eat(&self);    
+}
+
+struct Human {
+    name:String,
+    age: i32
+}
+
+impl LivingOrganism for Human {
+    fn create<S:Into<String>>( name:S, age:i32) -> Human {
+        Human{name: name.into(), age}
+    }
+
+    fn walk(&self) {
+        println!("I am walking");
+    }
+    fn eat(&self) {
+        println!("I am eating")
+    }
+    
+}
 
 fn core_datatypes(){
     let x:i64= 0;
@@ -256,6 +287,42 @@ fn Strings () {
 
 }
 
+fn traits () {
+    // let sachin = Human::create("sachin", 21);
+    // sachin.eat();
+    // sachin.walk();
+    let sachin = traits::Driver{name:"Sachin AK".to_string(), age:21, contract_period:2};
+    let redBullRacing = traits::FormulaOneCar::create("Red Bull".to_string(), 2021, 
+    "rb21".to_string(), 390.45, 8, sachin);
+    redBullRacing.toString();
+    redBullRacing.start();
+    redBullRacing.drive();
+    redBullRacing.change_gears(1);
+    redBullRacing.move_forward();
+    redBullRacing.change_gears(2);
+    redBullRacing.change_gears(3);
+    redBullRacing.change_gears(4);
+    redBullRacing.change_gears(5);
+    redBullRacing.change_gears(4);
+    redBullRacing.change_gears(3);
+    redBullRacing.move_left();
+    redBullRacing.move_forward();
+    redBullRacing.move_right();
+    redBullRacing.move_forward();
+    redBullRacing.change_gears(4);
+    redBullRacing.change_gears(5);
+    redBullRacing.change_gears(6);
+    redBullRacing.change_gears(7);
+    // redBullRacing.change_gears(4);
+    redBullRacing.change_gears(8);
+    redBullRacing.change_gears(6);
+    redBullRacing.change_gears(5);
+    redBullRacing.change_gears(4);
+    redBullRacing.change_gears(3);
+    redBullRacing.stop();
+    // sachin.toString();
+}
+
 fn main() {
-    Strings()
+    traits()
 }
